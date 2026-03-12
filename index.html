@@ -1,0 +1,483 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Gestión y Estrategia Financiera</title>
+  <meta name="description" content="Gestión y Estrategia Financiera. Acompañamiento profesional para organizaciones en crecimiento." />
+  <style>
+    :root{
+      --bg:#f6f8fb;
+      --surface:#ffffff;
+      --text:#1d2736;
+      --muted:#5f6b7a;
+      --line:#dbe3ec;
+      --primary:#17324d;
+      --primary-2:#274a6b;
+      --accent:#8fa7bf;
+      --success:#0f6b4c;
+      --danger:#a13a3a;
+      --shadow:0 18px 40px rgba(18, 38, 63, 0.08);
+      --radius:22px;
+      --max:1120px;
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      color:var(--text);
+      background:
+        radial-gradient(circle at top left, rgba(143,167,191,.16), transparent 28%),
+        radial-gradient(circle at 85% 12%, rgba(39,74,107,.08), transparent 18%),
+        var(--bg);
+      line-height:1.55;
+    }
+    .wrap{max-width:var(--max); margin:0 auto; padding:0 24px}
+    header{
+      position:sticky;
+      top:0;
+      z-index:10;
+      backdrop-filter:saturate(170%) blur(10px);
+      background:rgba(246,248,251,.78);
+      border-bottom:1px solid rgba(219,227,236,.8);
+    }
+    .nav{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:24px;
+      padding:16px 0;
+    }
+    .brand{
+      font-size:14px;
+      letter-spacing:.08em;
+      text-transform:uppercase;
+      color:var(--primary);
+      font-weight:700;
+    }
+    .nav a{
+      color:var(--muted);
+      text-decoration:none;
+      font-size:14px;
+      margin-left:18px;
+    }
+    .nav a:hover{color:var(--primary)}
+    .hero{padding:88px 0 56px}
+    .hero-grid{
+      display:grid;
+      grid-template-columns:1fr;
+      gap:44px;
+      align-items:center;
+    }
+    h1{
+      margin:0;
+      font-size:clamp(2.4rem, 6vw, 4.5rem);
+      line-height:1.02;
+      color:var(--primary);
+      letter-spacing:-.03em;
+    }
+    .hero h2{
+      margin:18px 0 0;
+      font-size:clamp(1.15rem, 2vw, 1.5rem);
+      line-height:1.28;
+      font-weight:600;
+      color:#26384d;
+      max-width:18ch;
+    }
+    .lead{
+      margin:24px 0 0;
+      font-size:1.1rem;
+      color:var(--muted);
+      max-width:62ch;
+    }
+    .cta-row{
+      display:flex;
+      flex-wrap:wrap;
+      gap:14px;
+      margin-top:32px;
+    }
+    .btn{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      padding:14px 22px;
+      border-radius:999px;
+      text-decoration:none;
+      font-weight:700;
+      transition:.2s ease;
+      border:1px solid transparent;
+      cursor:pointer;
+      font:inherit;
+    }
+    .btn-primary{
+      background:var(--primary);
+      color:#fff;
+      box-shadow:0 12px 24px rgba(23,50,77,.16);
+    }
+    .btn-primary:hover{transform:translateY(-1px); background:#102940}
+    section{padding:36px 0}
+    .section-head{
+      margin-bottom:22px;
+      max-width:76ch;
+    }
+    .section-label{
+      color:var(--primary-2);
+      font-size:12px;
+      font-weight:700;
+      letter-spacing:.08em;
+      text-transform:uppercase;
+      margin-bottom:10px;
+    }
+    .section-title{
+      margin:0 0 10px;
+      font-size:clamp(1.6rem, 3vw, 2.4rem);
+      line-height:1.12;
+      color:var(--primary);
+      letter-spacing:-.02em;
+    }
+    .section-copy{
+      margin:0;
+      color:var(--muted);
+      font-size:1.02rem;
+      max-width:72ch;
+    }
+    .grid-2{
+      display:grid;
+      grid-template-columns:repeat(2, minmax(0, 1fr));
+      gap:18px;
+    }
+    .card{
+      background:var(--surface);
+      border:1px solid var(--line);
+      border-radius:var(--radius);
+      padding:26px;
+      box-shadow:0 8px 22px rgba(18, 38, 63, 0.04);
+    }
+    .card h3{margin:0 0 10px; color:var(--primary); font-size:1.12rem}
+    .card p{margin:0; color:var(--muted)}
+    .principles{
+      display:grid;
+      grid-template-columns:repeat(3, minmax(0, 1fr));
+      gap:18px;
+    }
+    .principle{
+      padding:26px;
+      border-radius:var(--radius);
+      background:linear-gradient(180deg, rgba(255,255,255,.98), rgba(255,255,255,.9));
+      border:1px solid var(--line);
+    }
+    .principle .num{
+      font-size:12px;
+      font-weight:700;
+      color:var(--primary-2);
+      letter-spacing:.08em;
+      text-transform:uppercase;
+      margin-bottom:12px;
+    }
+    .principle h3{margin:0 0 8px; color:var(--primary); font-size:1.1rem}
+    .principle p{margin:0; color:var(--muted)}
+    .statement{
+      background:linear-gradient(180deg, rgba(23,50,77,.98), rgba(17,39,61,.98));
+      color:#fff;
+      border-radius:30px;
+      padding:36px;
+      box-shadow:var(--shadow);
+    }
+    .statement p{margin:0; max-width:70ch; color:rgba(255,255,255,.88); font-size:1.06rem}
+    .statement strong{color:#fff}
+    .contact-wrap{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:20px;
+      align-items:start;
+    }
+    .contact-card,.contact-panel{
+      background:#fff;
+      border:1px solid var(--line);
+      border-radius:28px;
+      padding:28px;
+      box-shadow:0 10px 24px rgba(18,38,63,.04);
+    }
+    .contact-card .section-title{margin-bottom:12px}
+    .contact-list{display:grid; gap:14px; margin-top:18px}
+    .contact-item{
+      display:flex;
+      flex-direction:column;
+      gap:4px;
+      padding:14px 0;
+      border-top:1px solid var(--line);
+    }
+    .contact-item:first-child{border-top:none; padding-top:0}
+    .contact-label{
+      font-size:12px;
+      font-weight:700;
+      letter-spacing:.08em;
+      text-transform:uppercase;
+      color:var(--primary-2);
+    }
+    .contact-value,.contact-value a{
+      color:var(--primary);
+      text-decoration:none;
+      font-size:1.04rem;
+      font-weight:600;
+    }
+    .contact-value a:hover{text-decoration:underline}
+    .mini-note{color:var(--muted); margin-top:14px; font-size:.97rem}
+    .form-card{
+      background:linear-gradient(180deg, rgba(255,255,255,.98), rgba(255,255,255,.94));
+      border:1px solid var(--line);
+      border-radius:28px;
+      padding:28px;
+      box-shadow:0 12px 28px rgba(18,38,63,.06);
+    }
+    form{display:grid; gap:16px}
+    .form-row{
+      display:grid;
+      grid-template-columns:repeat(2, minmax(0, 1fr));
+      gap:14px;
+    }
+    .field{display:grid; gap:8px}
+    label{
+      font-size:.92rem;
+      font-weight:600;
+      color:var(--primary);
+    }
+    input, textarea, select{
+      width:100%;
+      padding:14px 15px;
+      border-radius:16px;
+      border:1px solid #cfd9e4;
+      background:#fff;
+      color:var(--text);
+      font:inherit;
+      outline:none;
+      transition:border-color .2s ease, box-shadow .2s ease;
+    }
+    input:focus, textarea:focus, select:focus{
+      border-color:#8fa7bf;
+      box-shadow:0 0 0 4px rgba(143,167,191,.18);
+    }
+    textarea{min-height:132px; resize:vertical}
+    .notice{
+      display:none;
+      border-radius:16px;
+      padding:14px 16px;
+      font-size:.95rem;
+      margin-top:2px;
+    }
+    .notice.show{display:block}
+    .notice.success{background:#edf8f3; color:var(--success); border:1px solid #cfe9dc}
+    .notice.error{background:#fdf0f0; color:var(--danger); border:1px solid #efcdcd}
+    footer{padding:24px 0 40px; color:var(--muted); font-size:14px}
+    @media (max-width: 920px){
+      .hero-grid,.contact-wrap,.grid-2,.principles,.form-row{grid-template-columns:1fr;}
+      .hero h2{max-width:none}
+      .nav{flex-direction:column; align-items:flex-start}
+      .nav-links{display:flex; flex-wrap:wrap; gap:14px}
+      .nav a{margin-left:0}
+    }
+    @media (max-width: 640px){
+      .wrap{padding:0 18px}
+      .hero{padding:62px 0 34px}
+      .card,.principle,.statement,.contact-card,.contact-panel,.form-card{padding:22px}
+      .btn{width:100%}
+      .cta-row{flex-direction:column}
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="wrap nav">
+      <div class="brand">Gestión y Estrategia Financiera</div>
+      <nav class="nav-links" aria-label="Navegación principal">
+        <a href="#enfoque">Enfoque</a>
+        <a href="#areas">Áreas de trabajo</a>
+        <a href="#metodo">Cómo trabajamos</a>
+        <a href="#contacto">Contacto</a>
+      </nav>
+    </div>
+  </header>
+  <main>
+    <section class="hero">
+      <div class="wrap hero-grid">
+        <div>
+          <h1>Gestión y Estrategia Financiera</h1>
+          <h2>Para organizaciones en crecimiento</h2>
+          <p class="lead">Una propuesta centrada en ordenar la gestión, profesionalizar procesos y decidir con mayor claridad.</p>
+          <div class="cta-row">
+            <a class="btn btn-primary" href="#contacto">Quiero que me contacten</a>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section id="enfoque">
+      <div class="wrap">
+        <div class="section-head">
+          <div class="section-label">Enfoque</div>
+          <h2 class="section-title">Una estructura de gestión más clara, más profesional y más consistente</h2>
+          <p class="section-copy">La propuesta está orientada a organizaciones que necesitan mejorar el orden operativo, fortalecer sus procesos de gestión y contar con mejores herramientas para decidir. El foco no está solo en la información financiera, sino en su uso como soporte para el seguimiento, la planificación y el crecimiento.</p>
+        </div>
+      </div>
+    </section>
+    <section id="areas">
+      <div class="wrap">
+        <div class="section-head">
+          <div class="section-label">Áreas de trabajo</div>
+          <h2 class="section-title">Una mirada aplicada a la realidad de cada organización</h2>
+          <p class="section-copy">El trabajo combina capas operativas, analíticas, de planificación y de seguimiento para construir una gestión más ordenada y con mayor capacidad de decisión.</p>
+        </div>
+        <div class="grid-2">
+          <article class="card">
+            <h3>Tesorería y operación</h3>
+            <p>Orden de caja, cobranzas, pagos, circuitos y liquidez, con foco en dar mayor previsibilidad operativa y financiera.</p>
+          </article>
+          <article class="card">
+            <h3>Control y análisis</h3>
+            <p>Resultados, márgenes, cierres e indicadores para entender mejor la performance y sostener decisiones con información útil.</p>
+          </article>
+          <article class="card">
+            <h3>Planificación financiera</h3>
+            <p>Presupuesto, forecast y escenarios para anticipar desvíos, ordenar prioridades y trabajar con una mirada de mediano plazo.</p>
+          </article>
+          <article class="card">
+            <h3>Gestión estratégica</h3>
+            <p>Definición de objetivos de mediano plazo, KPIs y herramientas de seguimiento para alinear gestión y resultados.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+    <section id="metodo">
+      <div class="wrap">
+        <div class="section-head">
+          <div class="section-label">Cómo trabajamos</div>
+          <h2 class="section-title">Ordenar, profesionalizar y sostener mejores decisiones en el tiempo</h2>
+          <p class="section-copy">Cada organización tiene su propia dinámica, sus prioridades y su grado de desarrollo. El trabajo se adapta a ese contexto, combinando orden operativo, información útil para el análisis y herramientas de seguimiento que permitan sostener mejores decisiones.</p>
+        </div>
+        <div class="principles">
+          <article class="principle">
+            <div class="num">01</div>
+            <h3>Ordenar</h3>
+            <p>Dar estructura a procesos, circuitos e información para mejorar la base de gestión.</p>
+          </article>
+          <article class="principle">
+            <div class="num">02</div>
+            <h3>Profesionalizar</h3>
+            <p>Instalar herramientas, criterios y rutinas que aporten mayor consistencia.</p>
+          </article>
+          <article class="principle">
+            <div class="num">03</div>
+            <h3>Decidir mejor</h3>
+            <p>Transformar la información en seguimiento, foco y dirección para crecer con claridad.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+    <section>
+      <div class="wrap">
+        <div class="statement">
+          <p><strong>Una propuesta con foco en gestión, criterio y seguimiento.</strong> El trabajo combina perspectiva financiera con herramientas de gestión, planificación y control para acompañar organizaciones que valoran el orden, la claridad y una mirada profesional sobre su crecimiento.</p>
+        </div>
+      </div>
+    </section>
+    <section id="contacto">
+      <div class="wrap contact-wrap">
+        <div class="form-card">
+          <div class="section-label">Primer contacto</div>
+          <h2 class="section-title" style="font-size:2rem; margin-bottom:12px;">Quiero que me contacten</h2>
+          <p class="section-copy">Podés dejar tus datos y cualquier comentario para que te contacte y coordinar un primer intercambio.</p>
+          <form id="lead-form" action="https://formspree.io/f/mreykpnp" method="POST" style="margin-top:22px;">
+            <input type="hidden" name="_subject" value="Nueva consulta desde Gestión y Estrategia Financiera" />
+            <div class="form-row">
+              <div class="field">
+                <label for="nombre">Nombre y apellido</label>
+                <input id="nombre" name="nombre" type="text" placeholder="Ej. Juan Pérez" required />
+              </div>
+              <div class="field">
+                <label for="organizacion">Organización</label>
+                <input id="organizacion" name="organizacion" type="text" placeholder="Ej. Empresa / estudio / proyecto" required />
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="field">
+                <label for="email">Email</label>
+                <input id="email" name="email" type="email" placeholder="nombre@empresa.com" required />
+              </div>
+              <div class="field">
+                <label for="whatsapp">WhatsApp</label>
+                <input id="whatsapp" name="whatsapp" type="tel" placeholder="+54 9 11..." required />
+              </div>
+            </div>
+            <div class="field">
+              <label for="interes">Tema</label>
+              <select id="interes" name="interes" required>
+                <option value="" selected disabled>Seleccionar</option>
+                <option value="tesoreria_y_operacion">Tesorería y operación</option>
+                <option value="control_y_analisis">Control y análisis</option>
+                <option value="planificacion_financiera">Planificación financiera</option>
+                <option value="gestion_estrategica">Gestión estratégica</option>
+                <option value="mirada_integral">Una mirada integral</option>
+              </select>
+            </div>
+            <div class="field">
+              <label for="mensaje">¿Comentarios?</label>
+              <textarea id="mensaje" name="mensaje" placeholder="Sumá cualquier información que consideres necesaria"></textarea>
+            </div>
+            <button class="btn btn-primary" type="submit">Enviar consulta</button>
+            <div id="form-success" class="notice success">Consulta enviada. Gracias. Me voy a contactar a la brevedad.</div>
+            <div id="form-error" class="notice error">No se pudo enviar la consulta. Revisá la configuración del formulario.</div>
+          </form>
+        </div>
+        <div class="contact-card">
+          <div class="section-label">Contacto</div>
+          <h3 class="section-title" style="font-size:1.65rem; margin-bottom:10px;">Martín Quinteiro</h3>
+          <div class="contact-list">
+            <div class="contact-item">
+              <div class="contact-label">Email</div>
+              <div class="contact-value"><a href="mailto:quinteiro.martin@outlook.com">quinteiro.martin@outlook.com</a></div>
+            </div>
+            <div class="contact-item">
+              <div class="contact-label">WhatsApp</div>
+              <div class="contact-value"><a href="https://wa.me/5491133585376" target="_blank" rel="noopener noreferrer">+54 9 11 3358 5376</a></div>
+            </div>
+          </div>
+          <p class="mini-note">También podés contactarme directamente por mail o WhatsApp.</p>
+        </div>
+      </div>
+    </section>
+  </main>
+  <footer>
+    <div class="wrap">Gestión y Estrategia Financiera — Página institucional</div>
+  </footer>
+  <script>
+    (function(){
+      const form = document.getElementById('lead-form');
+      const success = document.getElementById('form-success');
+      const error = document.getElementById('form-error');
+      if (!form) return;
+      function show(el){ el.classList.add('show'); }
+      function hide(el){ el.classList.remove('show'); }
+      form.addEventListener('submit', async function(event){
+        hide(success);
+        hide(error);
+        event.preventDefault();
+        try {
+          const response = await fetch(form.action, {
+            method: 'POST',
+            body: new FormData(form),
+            headers: { 'Accept': 'application/json' }
+          });
+          if (response.ok) {
+            form.reset();
+            show(success);
+          } else {
+            show(error);
+          }
+        } catch (e) {
+          show(error);
+        }
+      });
+    })();
+  </script>
+</body>
+</html>
